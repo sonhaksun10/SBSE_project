@@ -51,5 +51,6 @@ def _rule_check(sequence, tsize, rule):
             raise Exception('Rule error: unused test case')
 
 
+print('test case')
 rule = {"allow_dup": True, "allow_unused": True}
 modify_testcase('make.tests', 'output.tests', np.random.permutation(110), rule)
