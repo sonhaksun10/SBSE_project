@@ -1,1 +1,1 @@
-print('feature')
+print('main')
