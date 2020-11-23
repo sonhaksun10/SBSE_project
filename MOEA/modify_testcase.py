@@ -26,6 +26,13 @@ class modify_testcase:
         self.rule = {"allow_dup": True, "allow_unused": True}
 
     def modify(self,sequence):
+        '''
+        change test case as given sequence
+        output file name: 'outputX.tests', X = number of this function called
+
+        :param sequence:    numpy.array, sequence of test cases
+        :return:            String, output file name
+        '''
         #index error check
         for seq in sequence:
             if seq >= self.datalen:
@@ -41,6 +48,8 @@ class modify_testcase:
             for seq in sequence:
                 f.write(self.data[seq])
 
+        return output_fname
+
     def _rule_check(self, sequence):
         if not self.rule["allow_dup"]:
             if len(sequence) != len(set(sequence)):
@@ -51,6 +60,12 @@ class modify_testcase:
                 raise Exception('Rule error: unused test case')
 
     def change_rule(self,rule):
+        '''
+        It checks valid rule name and value automatically
+
+        :param rule:    dictionary: {"rule name": "value"}
+        :return:        None
+        '''
         for key in rule.keys():
             if key in self.rule:
                 if type(self.rule[key]) == type(rule[key]):
@@ -70,3 +85,6 @@ c = modify_testcase('make.tests')
 #c.change_rule({"allow_dup": False})
 sequence = np.random.permutation(111)
 c.modify(sequence)
+sequence = np.random.permutation(111)
+c.modify(sequence)
+
