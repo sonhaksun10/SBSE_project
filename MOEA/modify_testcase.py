@@ -25,6 +25,9 @@ class modify_testcase:
         self.num_trial = 0 # number of function 'modify' called
         self.rule = {"allow_dup": True, "allow_unused": True}
 
+    def get_datasize(self):
+        return self.datalen
+
     def modify(self,sequence):
         '''
         change test case as given sequence
@@ -79,12 +82,12 @@ class modify_testcase:
 
 
 
-
-print('test case')
-c = modify_testcase('make.tests')
-#c.change_rule({"allow_dup": False})
-sequence = np.random.permutation(111)
-c.modify(sequence)
-sequence = np.random.permutation(111)
-c.modify(sequence)
+def test():
+    print('test case')
+    c = modify_testcase('make.tests')
+    #c.change_rule({"allow_dup": False})
+    sequence = np.random.permutation(111)
+    c.modify(sequence)
+    sequence = np.random.permutation(111)
+    c.modify(sequence)
 
