@@ -1,37 +1,19 @@
 import numpy as np
 import modify_testcase as modifier
 import random
+import GLOB
+import GATool as GA
 
-POP = 100
-MAX_IT = 30
-FIT_FUNC_GENERATED = False
-
-class Gene_Info:
-    def __init__(self,sequence):
-        self.sequence = sequence
-        self.eval = None
-
-    def set_eval(self,eval):
-        self.eval = eval
-
-    def get_eval(self):
-        return self.eval
-
-    def get_seq(self):
-        return self.sequence
-
-    def is_evaluated(self):
-        return not (self.eval is None)
 
 def run_NSGA2(input_fname):
     modify = modifier.modify_testcase(input_fname)
     dim = modify.get_datasize()
 
-    population = initial_genes(dim)
+    population = GA.initial_genes(dim,GLOB.POP)
     population_history = [population]
-    for i in range(MAX_IT):
-        new_pop = crossover(population)
-        evaluate(new_pop,modify)
+    for i in range(GLOB.MAX_IT):
+        new_pop = GA.crossover(population)
+        GA.evaluate(new_pop,modify)
         pareto = get_pareto(new_pop)
         new_pop = select(pareto)
         population = new_pop
@@ -39,71 +21,6 @@ def run_NSGA2(input_fname):
 
     first_pareto = get_first_pareto(population) #final result
 
-
-def initial_genes(dim):
-    '''
-
-    :return: list(Gene_Info)
-    '''
-
-    pop = []
-    if type(dim) == tuple:
-        pass
-    else:
-        for i in range(POP):
-            gene = Gene_Info(np.random.permutation(dim))
-            pop.append(gene)
-    return pop
-
-def crossover(pop):
-    '''
-
-    :param pop:
-    :return: list(Gene_Info)
-    '''
-    new_pop = pop[:]
-    child_pop = []
-    p = 0.2
-    gene_size = len(pop[0].get_seq())
-    for i in range(POP):
-        gene1, gene2 = random.sample(pop,2)
-        seq1, seq2 = gene1.get_seq(), gene2.get_seq()
-        child_seq = []
-        query, id = seq1, 'seq1'
-        idx = 0
-        while len(child_seq) < gene_size:
-            while query[idx] in child_seq:
-                idx = (idx+1)%gene_size
-            child_seq.append(query[idx])
-            if random.random() < p:
-                if id == 'seq1':
-                    query, id = seq2, 'seq2'
-                else:
-                    query, id = seq1, 'seq1'
-
-        child = Gene_Info(child_seq)
-        child_pop.append(child)
-
-    new_pop += child_pop
-
-    return new_pop
-
-def evaluate(pop,modify):
-    '''
-    complete this function after feature detection team finished their work
-
-    :param pop:
-    :return:        None
-    '''
-
-    for gene in pop:
-        if gene.is_evaluated():
-            continue
-
-        if FIT_FUNC_GENERATED:
-            pass
-        else:         #remove this part after fitness evaluation is done
-            gene.set_eval(np.random.rand(3))
 
 
 def get_pareto(pop):
@@ -155,7 +72,6 @@ def get_pareto(pop):
     return pareto
 
 
-
 def _is_dominate(gene1,gene2):
     '''
     check gene1 dominates gene2
@@ -186,7 +102,7 @@ def select(pareto):
     :return:
     '''
     new_pop = []
-    remain_pop = POP//2
+    remain_pop = GLOB.POP//2
     for layer in pareto:
         if len(layer) <= remain_pop:
             new_pop += layer
@@ -208,9 +124,9 @@ def crowding_dist(layer,num_select):
         min_val = min(cp_layer, key=lambda gene: gene.get_eval()[i]).get_eval()[i]
 
         idx = layer.index(sorted_gene[0])
-        distance[idx] += 999999999999
+        distance[idx] += GLOB.LARGE
         idx = layer.index(sorted_gene[-1])
-        distance[idx] += 999999999999
+        distance[idx] += GLOB.LARGE
 
         for j in range(1,len(layer)-1):
             idx = layer.index(sorted_gene[j])
