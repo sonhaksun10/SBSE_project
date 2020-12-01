@@ -31,7 +31,7 @@ def collect_non_dominated(pop,CA,DA):
         #check if non dominated
         p.update_flag({"non-dominated":True,"dominate-other":False})
         for archive in CA+DA:
-            if _is_dominate(archive,p):
+            if GA._is_dominate(archive,p):
                 p.update_flag({"non-dominated":False})
                 break
         if not p.get_flag("non-dominated"): #skip if not non-dominated
@@ -39,11 +39,11 @@ def collect_non_dominated(pop,CA,DA):
 
         #check if it dominated other
         for archive in CA:
-            if _is_dominate(p,archive):
+            if GA._is_dominate(p,archive):
                 CA.remove(archive)
                 p.update_flag({"dominate-other":True})
         for archive in DA:
-            if _is_dominate(p,archive):
+            if GA._is_dominate(p,archive):
                 DA.remove(archive)
                 p.update_flag({"dominate-other":True})
 
@@ -93,17 +93,3 @@ def new_crossover(CA,DA):
 
     return new_pop
 
-
-
-def _is_dominate(gene1,gene2):
-    '''
-    check gene1 dominates gene2
-
-    :param gene1:
-    :param gene2:
-    :return:
-    '''
-    for e1,e2 in zip(gene1.get_eval(), gene2.get_eval()):
-        if e1 <= e2:
-            return False
-    return True

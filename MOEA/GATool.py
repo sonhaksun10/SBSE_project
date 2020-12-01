@@ -99,3 +99,64 @@ def evaluate(pop,modify):
         else:         #remove this part after fitness evaluation is done
             gene.set_eval(np.random.rand(3))
 
+
+def get_pareto(pop):
+    '''
+    important!
+    get pareto front with new data
+
+    return type: [first pareto, second pareto, ... ,last pareto]
+    ex) first pareto = [gene3, gene15, gene19, gene22, ...]
+        second pareto = [gene5, gene10, gene20, ...]
+
+    :param pop:
+    :return:    list(list(Gene_Info))
+    '''
+    pareto = [[]]
+
+    S = [[] for i in range(len(pop))]
+    n = [0 for i in range(len(pop))]
+    rank = [0 for i in range(len(pop))]
+
+    for i in range(len(pop)):
+        p = pop[i]
+        for j in range(len(pop)):
+            q = pop[j]
+            if _is_dominate(p,q):
+                S[i].append(j)
+            elif _is_dominate(q,p):
+                n[i] += 1
+        if n[i] == 0:
+            rank[i] = 0
+            pareto[0].append(p)
+
+    x = 0
+    while (pareto[x] != []):
+        Q = []
+        for p in pareto[x]:
+            i = pop.index(p)
+            for j in S[i]:
+                n[j] -= 1
+                if (n[j] == 0):
+                    rank[j] = x + 1
+                    if pop[j] not in Q:
+                        Q.append(pop[j])
+        x += 1
+        pareto.append(Q)
+
+    pareto.pop()
+    return pareto
+
+
+def _is_dominate(gene1,gene2):
+    '''
+    check gene1 dominates gene2
+
+    :param gene1:
+    :param gene2:
+    :return:
+    '''
+    for e1,e2 in zip(gene1.get_eval(), gene2.get_eval()):
+        if e1 <= e2:
+            return False
+    return True
