@@ -53,8 +53,8 @@ def collect_non_dominated(pop,CA,DA):
             DA.append(p)
 
     #step2: limit the size of CA and DA
-    if len(CA+DA) > GLOB.MAX_ARCHIVE:
-        if len(CA) > GLOB.MAX_ARCHIVE:
+    if len(CA+DA) > GLOB.MAX_ARCHIVE_TAEA:
+        if len(CA) > GLOB.MAX_ARCHIVE_TAEA:
             DA = []
             return
         for pop_da in DA:
@@ -66,7 +66,7 @@ def collect_non_dominated(pop,CA,DA):
 
         #remove some population in DA
         new_DA = sorted(DA,key= lambda pop: pop.get_flag("len"))
-        DA = new_DA[-GLOB.MAX_ARCHIVE+len(CA):]
+        DA = new_DA[-GLOB.MAX_ARCHIVE_TAEA+len(CA):]
 
 
 
