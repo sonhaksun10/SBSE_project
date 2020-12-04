@@ -5,9 +5,9 @@ import GLOB
 import GATool as GA
 
 
-def run_NSGA2(input_fname):
+def run_NSGA2(input_fname, test_size):
     modify = modifier.modify_testcase(input_fname)
-    dim = modify.get_datasize()
+    dim = test_size
 
     population = GA.initial_genes(dim,GLOB.POP)
     population_history = [population]
@@ -78,4 +78,4 @@ def crowding_dist(layer,num_select):
 
 
 
-run_NSGA2('make.tests')
+run_NSGA2('make.tests',360)
