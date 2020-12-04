@@ -4,9 +4,9 @@ import random
 import GLOB
 import GATool as GA
 
-def run_TAEA(input_fname):
+def run_TAEA(test_size):
     modify = modifier.modify_testcase(input_fname)
-    dim = modify.get_datasize()
+    dim = test_size
 
     population = GA.initial_genes(dim, GLOB.POP)
     population_history = [population]

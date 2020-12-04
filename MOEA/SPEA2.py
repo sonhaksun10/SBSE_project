@@ -6,9 +6,9 @@ import GATool as GA
 import math
 
 
-def run_SPEA2(input_fname):
+def run_SPEA2(test_size):
     modify = modifier.modify_testcase(input_fname)
-    dim = modify.get_datasize()
+    dim = test_size
 
     population = GA.initial_genes(dim,GLOB.POP)
     archive = []

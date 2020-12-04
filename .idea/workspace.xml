@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand />
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a0268be7-b839-412b-9386-cce7b7b14f03" name="Default Changelist" comment="lastly committed by sonhaksun10">
+      <change afterPath="$PROJECT_DIR$/Feature/sed/V0coverage_com.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/V0coverage_remove0.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/V1coverage_com.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/V1coverage_remove0.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/V2coverage_com.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/V2coverage_remove0.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/V3coverage_com.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/V3coverage_remove0.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/V4coverage_com.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/V4coverage_remove0.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/V5coverage_remove0.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/V6coverage_remove0.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/delta_coverage_0_1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/delta_coverage_1_2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/delta_coverage_2_3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/delta_coverage_3_4.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/delta_coverage_4_5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/delta_coverage_5_6.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/delta_coverage_6_7.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/fault_history(sed_v1).csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/fault_history(sed_v2).csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/fault_history(sed_v3).csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/fault_history(sed_v4).csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/fault_history(sed_v5).csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/fault_history(sed_v6).csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/fault_history(sed_v7).csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/testcasetTime(v0).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/testcasetTime(v1).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/testcasetTime(v2).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/testcasetTime(v3).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/testcasetTime(v4).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/testcasetTime(v5).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Feature/sed/testcasetTime(v6).txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MOEA/algorithm_evaluation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MOEA/version_evaluation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020-11-20__3_34__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020-11-20__3_43__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020-11-20_오후_3_34_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020-11-20_오후_3_43_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOEA/NGSA2.py" beforeDir="false" afterPath="$PROJECT_DIR$/MOEA/NGSA2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOEA/SPEA2.py" beforeDir="false" afterPath="$PROJECT_DIR$/MOEA/SPEA2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOEA/TAEA.py" beforeDir="false" afterPath="$PROJECT_DIR$/MOEA/TAEA.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1kXis1gyKUrWl8xuzlSdZcwHukx" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/MOEA" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\PycharmProjects\SBSE_project\MOEA" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.version_evaluation">
+    <configuration name="NGSA2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SBSE_project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MOEA" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MOEA/NGSA2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="parser_coverage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SBSE_project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Feature" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Feature/parser_coverage.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="version_evaluation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="SBSE_project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MOEA" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MOEA/version_evaluation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.version_evaluation" />
+        <item itemvalue="Python.parser_coverage" />
+        <item itemvalue="Python.NGSA2" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a0268be7-b839-412b-9386-cce7b7b14f03" name="Default Changelist" comment="" />
+      <created>1605853539132</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605853539132</updated>
+    </task>
+    <task id="LOCAL-00001" summary="commit2">
+      <created>1605854181596</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605854181596</updated>
+    </task>
+    <task id="LOCAL-00002" summary="commit3">
+      <created>1605854253688</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605854253688</updated>
+    </task>
+    <task id="LOCAL-00003" summary="committed by sonhaksun10">
+      <created>1605854422585</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605854422585</updated>
+    </task>
+    <task id="LOCAL-00004" summary="lastly committed by sonhaksun10">
+      <created>1605854546527</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1605854546527</updated>
+    </task>
+    <task id="LOCAL-00005" summary="lastly committed by sonhaksun10">
+      <created>1605854690786</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1605854690786</updated>
+    </task>
+    <task id="LOCAL-00006" summary="lastly committed by sonhaksun10">
+      <created>1605855463021</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1605855463021</updated>
+    </task>
+    <task id="LOCAL-00007" summary="lastly committed by sonhaksun10">
+      <created>1605857724667</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605857724667</updated>
+    </task>
+    <task id="LOCAL-00008" summary="lastly committed by sonhaksun10">
+      <created>1605857830305</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1605857830305</updated>
+    </task>
+    <task id="LOCAL-00009" summary="lastly committed by sonhaksun10">
+      <created>1605858126809</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1605858126809</updated>
+    </task>
+    <task id="LOCAL-00010" summary="lastly committed by sonhaksun10">
+      <created>1606205605667</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1606205605667</updated>
+    </task>
+    <task id="LOCAL-00011" summary="lastly committed by sonhaksun10">
+      <created>1606206042096</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1606206042096</updated>
+    </task>
+    <task id="LOCAL-00012" summary="lastly committed by sonhaksun10">
+      <created>1606821280564</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1606821280564</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:C:/Users/sonhaksun/PycharmProjects/SBSE_project/MOEA" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit2" />
+    <MESSAGE value="commit3" />
+    <MESSAGE value="committed by sonhaksun10" />
+    <MESSAGE value="lastly committed by sonhaksun10" />
+    <option name="LAST_COMMIT_MESSAGE" value="lastly committed by sonhaksun10" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="410" y="166" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605858409564">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="410" y="166" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605858409564" />
+    <state x="687" y="216" key="FileChooserDialogImpl" timestamp="1605858291783">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="687" y="216" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605858291783" />
+    <state x="746" y="420" key="Github.CreateGistDialog" timestamp="1605858381076">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="746" y="420" key="Github.CreateGistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605858381076" />
+    <state x="807" y="392" key="Github.ShareDialog" timestamp="1605857598716">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="807" y="392" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605857598716" />
+    <state width="2539" height="396" key="GridCell.Tab.0.bottom" timestamp="1607060367350">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="396" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1607060367350" />
+    <state width="2539" height="396" key="GridCell.Tab.0.center" timestamp="1607060367350">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="396" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1607060367350" />
+    <state width="2539" height="396" key="GridCell.Tab.0.left" timestamp="1607060367350">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="396" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1607060367350" />
+    <state width="2539" height="396" key="GridCell.Tab.0.right" timestamp="1607060367350">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="396" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1607060367350" />
+    <state x="184" y="86" key="MergeDialog" timestamp="1605854605053">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="184" y="86" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605854605053" />
+    <state x="512" y="223" key="MultipleFileMergeDialog" timestamp="1605854609963">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="512" y="223" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605854609963" />
+    <state x="682" y="152" key="RollbackChangesDialog" timestamp="1605857511570">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="682" y="152" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605857511570" />
+    <state x="351" y="78" key="SettingsEditor" timestamp="1605858424378">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="351" y="78" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605858424378" />
+    <state x="603" y="253" key="Vcs.Push.Dialog.v2" timestamp="1606821288459">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="452" y="188" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1605858135955" />
+    <state x="603" y="253" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1606821288459" />
+    <state x="693" y="190" key="VcsDiffUtil.ChangesDialog" timestamp="1605857496835">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="693" y="190" key="VcsDiffUtil.ChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605857496835" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1605858424693">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605858424693" />
+    <state x="92" y="92" width="1736" height="856" key="git4idea.log.GitShowExternalLogAction" timestamp="1605858375024">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="git4idea.log.GitShowExternalLogAction/0.0.1920.1040@0.0.1920.1040" timestamp="1605858375024" />
+  </component>
+</project>
