@@ -22,10 +22,10 @@ class VEval:
         DIR_name = "../Feature/" + SIR_name + "/"
         version = self.version
 
-        cov = "V" + str(version) + "coverage_com.csv"
-        delta = "delta_coverage_" + str(version) + "_" + str(version + 1) + ".csv"
-        fhistory = "fault_history(" + SIR_name + "_v" + str(version + 1) + ").csv"
-        timecost = "testcasetTime(v" + str(version) + ").txt"
+        cov = "V" + str(version-1) + "coverage_com.csv"
+        delta = "delta_coverage_" + str(version-1) + "_" + str(version) + ".csv"
+        fhistory = "fault_history(" + SIR_name + "_v" + str(version) + ").csv"
+        timecost = "testcasetTime(v" + str(version-1) + ").txt"
 
         with open(DIR_name + cov, 'r') as f:
             rdr = csv.reader(f)
