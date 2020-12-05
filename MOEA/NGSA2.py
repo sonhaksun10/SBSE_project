@@ -1,19 +1,20 @@
 import numpy as np
 import modify_testcase as modifier
+import version_evaluation as evaluation
 import random
 import GLOB
 import GATool as GA
 
 
-def run_NSGA2(input_fname, test_size):
-    modify = modifier.modify_testcase(input_fname)
+def run_NSGA2(SIR_name, version, test_size):
+    evaluator = evaluation.VEval(SIR_name, version, test_size)
     dim = test_size
 
     population = GA.initial_genes(dim,GLOB.POP)
     population_history = [population]
     for i in range(GLOB.MAX_IT):
-        new_pop = GA.crossover(population)
-        GA.evaluate(new_pop,modify)
+        new_pop = GA.crossover(population, mr=1/dim)
+        GA.evaluate(new_pop,evaluator)
         pareto = GA.get_pareto(new_pop)
         new_pop = select(pareto)
         population = new_pop

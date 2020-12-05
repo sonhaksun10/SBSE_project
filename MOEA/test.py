@@ -2,12 +2,16 @@ import random
 
 def PMX(parent1, parent2):
     size = min(len(parent1), len(parent2))
-    p1, p2 = ind1[:], ind2[:]
+    p1, p2 = [0]*size, [0]*size
     child1,child2 = ind1[:],ind2[:]
 
     print(parent1,p1)
     cut1 = random.randint(0, size - 1)
     cut2 = random.randint(cut1 + 1, size)
+
+    for i in range(size):
+        p1[ind1[i]] = i
+        p2[ind2[i]] = i
 
     # Apply crossover between cx points
     for i in range(cut1, cut2):
