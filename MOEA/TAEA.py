@@ -1,5 +1,6 @@
 import numpy as np
 import modify_testcase as modifier
+import version_evaluation as evaluation
 import random
 import GLOB
 import GATool as GA
@@ -11,12 +12,13 @@ def run_TAEA(SIR_name, version, test_size):
     population = GA.initial_genes(dim, GLOB.POP)
     population_history = [population]
     CA, DA = [], [] #covergence archive, diversity archive
-    GA.evaluate(population,modify)
+    GA.evaluate(population,evaluator)
 
     for i in range(GLOB.MAX_IT):
         collect_non_dominated(population,CA,DA)
-        new_pop = GA.crossover(CA+DA)
-        GA.evaluate(new_pop,evaluator)
+        print(len(CA), len(DA))
+        population = new_crossover(CA,DA)
+        GA.evaluate(population,evaluator)
 
 
 
@@ -35,7 +37,7 @@ def collect_non_dominated(pop,CA,DA):
                 p.update_flag({"non-dominated":False})
                 break
         if not p.get_flag("non-dominated"): #skip if not non-dominated
-            break
+            continue
 
         #check if it dominated other
         for archive in CA:
@@ -93,3 +95,4 @@ def new_crossover(CA,DA):
 
     return new_pop
 
+run_TAEA('sed',1,360)

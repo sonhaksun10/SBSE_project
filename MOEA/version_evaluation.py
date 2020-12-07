@@ -100,8 +100,3 @@ def str2int(arr):
         except ValueError:
             new_arr.append(cell)
     return new_arr
-
-
-
-
-val = VEval('sed',0,360)

@@ -1,5 +1,6 @@
 import numpy as np
 import modify_testcase as modifier
+import version_evaluation as evaluation
 import random
 import GLOB
 import GATool as GA
@@ -125,4 +126,4 @@ def select(pop):
 
 
 
-run_SPEA2('make.tests')
+run_SPEA2('sed',1,360)

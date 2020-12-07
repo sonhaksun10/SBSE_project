@@ -1,4 +1,11 @@
-POP = 100
+#Main function variables
+TEST_PGM = ['sed']
+NUM_VERSIONS = {'sed':7}
+TRIALS_PER_VERSION = 30
+TRY_ALGORITHM = ['NSGA2','SPEA2','']
+
+#Genetic algorithm variables
+POP = 250
 MAX_IT = 30
 FIT_FUNC_GENERATED = False
 LARGE = 999999999999

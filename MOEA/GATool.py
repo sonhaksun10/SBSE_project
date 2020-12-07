@@ -1,6 +1,7 @@
 import numpy as np
 import GLOB
 import random
+import copy
 
 class Gene_Info:
     def __init__(self,sequence):
@@ -105,7 +106,7 @@ def PMX(parent1, parent2):
     seq1, seq2 = parent1.get_seq(), parent2.get_seq()
     size = min(len(seq1), len(seq2))
     p1, p2 = [0]*size, [0]*size
-    child1,child2 = ind1[:],ind2[:]
+    child1,child2 = copy.deepcopy(seq1), copy.deepcopy(seq2)
 
     cut1 = random.randint(0, size - 1)
     cut2 = random.randint(cut1 + 1, size)
@@ -205,7 +206,10 @@ def _is_dominate(gene1,gene2):
     :param gene2:
     :return:
     '''
+    if gene1 == gene2:
+        return False
+
     for e1,e2 in zip(gene1.get_eval(), gene2.get_eval()):
-        if e1 <= e2:
+        if e1 < e2:
             return False
     return True

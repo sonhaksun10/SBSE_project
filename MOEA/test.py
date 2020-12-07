@@ -27,6 +27,30 @@ def PMX(parent1, parent2):
 
     return child1,child2
 
+'''
 ind1, ind2 = [0,1,2,3,4,5], [4,2,0,5,1,3]
 res1,res2=PMX(ind1,ind2)
 print(ind1,ind2,res1,res2)
+'''
+
+
+####multi process test#####
+from multiprocessing import Process
+import os
+
+def info(title):
+    print(title)
+    print('module name:', __name__)
+    print('parent process:', os.getppid())
+    print('process id:', os.getpid())
+
+def f(name,s):
+    info('function f')
+    print('hello', name)
+    print(s)
+
+if __name__ == '__main__':
+    info('main line')
+    p = Process(target=f, args=('bob',3))
+    p.start()
+    p.join()
