@@ -210,6 +210,6 @@ def _is_dominate(gene1,gene2):
         return False
 
     for e1,e2 in zip(gene1.get_eval(), gene2.get_eval()):
-        if e1 < e2:
+        if e1 <= e2:
             return False
     return True

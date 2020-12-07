@@ -11,6 +11,8 @@ def run_NSGA2(SIR_name, version, test_size):
     dim = test_size
 
     population = GA.initial_genes(dim,GLOB.POP)
+    if GLOB.DEBUG:
+        print('0', len(population))
     population_history = [population]
     for i in range(GLOB.MAX_IT):
         new_pop = GA.crossover(population, mr=1/dim)
@@ -19,8 +21,11 @@ def run_NSGA2(SIR_name, version, test_size):
         new_pop = select(pareto)
         population = new_pop
         population_history.append(population)
+        if GLOB.DEBUG:
+            print(i, len(population))
 
     first_pareto = get_first_pareto(population) #final result
+    return first_pareto
 
 def get_first_pareto(pop):
     '''
@@ -39,7 +44,10 @@ def select(pareto):
     :return:
     '''
     new_pop = []
-    remain_pop = GLOB.POP//2
+    remain_pop = GLOB.POP
+    if GLOB.DEBUG:
+        for i in range(len(pareto)):
+            print('layer',i,':',len(pareto[i]))
     for layer in pareto:
         if len(layer) <= remain_pop:
             new_pop += layer
@@ -57,8 +65,8 @@ def crowding_dist(layer,num_select):
     for i in range(num_obj):
         cp_layer = layer[:]
         sorted_gene = sorted(cp_layer, key= lambda gene: gene.get_eval()[i])
-        max_val = max(cp_layer, key=lambda gene: gene.get_eval()[i]).get_eval()[i]
-        min_val = min(cp_layer, key=lambda gene: gene.get_eval()[i]).get_eval()[i]
+        max_val = sorted_gene[-1].get_eval()[i]
+        min_val = sorted_gene[0].get_eval()[i]
 
         idx = layer.index(sorted_gene[0])
         distance[idx] += GLOB.LARGE
@@ -70,9 +78,12 @@ def crowding_dist(layer,num_select):
             distance[idx] = distance[idx] + (sorted_gene[j+1].get_eval()[i] - sorted_gene[j-1].get_eval()[i])/(max_val - min_val + 1e-6)
 
     cutline = sorted(distance)[-num_select]
+
     res = []
     for i in range(len(distance)):
         if distance[i] >= cutline:
             res.append(layer[i])
 
     return res
+
+#run_NSGA2('sed',1,360)

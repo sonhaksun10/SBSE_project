@@ -3,6 +3,7 @@ Evaluate 3 kinds of APFDc: APSCc, APDCc, APFDc
 '''
 import glob
 import csv
+import numpy as np
 
 class VEval:
     def __init__(self,SIR_name, version, test_size):
@@ -64,30 +65,28 @@ class VEval:
 
 def APFDc(seq, fault_mat, cost):
     num_fault = len(fault_mat[0])
-    true_num_fault = 0
+    fault_real_num = [1] * num_fault
 
     up = 0
     down = 0
 
     for i in range(num_fault):
-        num_fault_add = 0
         up_add = 0
         fault_detected = False
         for j in seq:
             if not fault_detected:
-                if fault_mat[j][i] > 0:
-                    num_fault_add = fault_mat[j][i]
-                    up_add += 0.5*cost[j]
+                value = fault_mat[j][i]
+                if value > 0:
+                    fault_real_num[i] = value
+                    up_add -= 0.5*cost[j]*value
+                    fault_detected = True
             else:
-                up_add += cost[j]
+                up_add += cost[j] * fault_real_num[i]
 
-        if not fault_detected:
-            num_fault_add = 1
 
         up += up_add
-        true_num_fault += num_fault_add
 
-    down = sum(cost) * true_num_fault
+    down = sum(cost) * sum(fault_real_num)
     res = up/down
 
     return res

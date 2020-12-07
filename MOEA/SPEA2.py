@@ -15,6 +15,8 @@ def run_SPEA2(SIR_name, version, test_size):
     archive = []
     population_history = [population]
     archive_history = [archive]
+    if GLOB.DEBUG:
+        print('0', len(population))
     for i in range(GLOB.MAX_IT):
         #update
         union = population+archive
@@ -22,12 +24,15 @@ def run_SPEA2(SIR_name, version, test_size):
         get_fitness(union)
         archive = select(union)
         population = GA.crossover(archive)[-GLOB.POP:]
+        if GLOB.DEBUG:
+            print(i, len(population))
 
         #save history
         population_history.append(population)
         archive_history.append(archive)
 
     first_pareto = get_first_pareto(archive) #final result
+    return first_pareto
 
 def get_first_pareto(pop):
     '''
@@ -82,8 +87,10 @@ def select(pop):
             new_pop.append(p)
 
     if len(new_pop) > GLOB.MAX_ARCHIVE_SPEA2:
+        if GLOB.DEBUG:
+            print('truncate population, current size', len(new_pop), 'target size', GLOB.MAX_ARCHIVE_SPEA2)
         num_remove = len(new_pop) - GLOB.MAX_ARCHIVE_SPEA2
-        for _ in num_remove:
+        for _ in range(num_remove):
             #calculate distance to other nodes
             for p in new_pop:
                 dist_table = []
@@ -104,8 +111,10 @@ def select(pop):
                     dt2 = q.get_flag('dist_table')
 
                     for d1,d2 in zip(dt1,dt2):
-                        if d1 > d2:
+                        if d1[0] > d2[0]:
                             truncate = False
+                            break
+                        elif d1[0] < d2[0]:
                             break
 
                     if not truncate:
@@ -113,9 +122,13 @@ def select(pop):
 
                 if truncate:
                     new_pop.remove(p)
+                    removed = True
                     break
 
             if not removed:
+                if GLOB.DEBUG:
+                    for p in new_pop:
+                        print(p.get_flag('dist_table'))
                 raise Exception('one element in archive is not removed')
 
     elif len(new_pop) < GLOB.MAX_ARCHIVE_SPEA2:
@@ -126,4 +139,4 @@ def select(pop):
 
 
 
-run_SPEA2('sed',1,360)
+#run_SPEA2('sed',1,360)
