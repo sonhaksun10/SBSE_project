@@ -21,7 +21,10 @@ def run_NSGA2(SIR_name, version, test_size):
         population_history.append(population)
 
     first_pareto = get_first_pareto(population) #final result
+<<<<<<< HEAD
     print(len(first_pareto))
+=======
+>>>>>>> origin/feature
 
 def get_first_pareto(pop):
     '''
@@ -79,3 +82,8 @@ def crowding_dist(layer,num_select):
     return res
 
 
+<<<<<<< HEAD
+=======
+
+run_NSGA2('make.tests',360)
+>>>>>>> origin/feature

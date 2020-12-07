@@ -63,4 +63,8 @@ def select_in_layer(layer,num_select):
 
 
 
+<<<<<<< HEAD
 run_NSGA2('make.tests')
+=======
+run_NSGA2('make.tests')
+>>>>>>> origin/feature
