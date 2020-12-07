@@ -6,8 +6,8 @@ import GATool as GA
 import math
 
 
-def run_SPEA2(test_size):
-    modify = modifier.modify_testcase(input_fname)
+def run_SPEA2(SIR_name, version, test_size):
+    evaluator = evaluation.VEval(SIR_name, version, test_size)
     dim = test_size
 
     population = GA.initial_genes(dim,GLOB.POP)
@@ -17,7 +17,7 @@ def run_SPEA2(test_size):
     for i in range(GLOB.MAX_IT):
         #update
         union = population+archive
-        GA.evaluate(union,modify)
+        GA.evaluate(union,evaluator)
         get_fitness(union)
         archive = select(union)
         population = GA.crossover(archive)[-GLOB.POP:]

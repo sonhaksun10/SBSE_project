@@ -4,8 +4,8 @@ import random
 import GLOB
 import GATool as GA
 
-def run_TAEA(test_size):
-    modify = modifier.modify_testcase(input_fname)
+def run_TAEA(SIR_name, version, test_size):
+    evaluator = evaluation.VEval(SIR_name, version, test_size)
     dim = test_size
 
     population = GA.initial_genes(dim, GLOB.POP)
@@ -16,7 +16,7 @@ def run_TAEA(test_size):
     for i in range(GLOB.MAX_IT):
         collect_non_dominated(population,CA,DA)
         new_pop = GA.crossover(CA+DA)
-        GA.evaluate(new_pop,modify)
+        GA.evaluate(new_pop,evaluator)
 
 
 
