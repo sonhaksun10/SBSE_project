@@ -1,4 +1,5 @@
 DEBUG = False
+MULTI_PROCESS = True
 
 #Main function variables
 TEST_PGM = ['sed']

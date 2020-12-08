@@ -29,6 +29,7 @@ def run_MOEA(MOEA,SIR_name,version):
     result = []
     num_testcases = GLOB.NUM_TESTCASES[SIR_name]
     for i in range(GLOB.TRIALS_PER_VERSION):
+        print(SIR_name, 'version', version, '_', MOEA, ': trial', i)
         if MOEA == 'NSGA2':
             res = NSGA2.run_NSGA2(SIR_name,version,num_testcases)
             result.append(res)
@@ -43,4 +44,17 @@ def run_MOEA(MOEA,SIR_name,version):
 
 
 if __name__ == '__main__':
-    run_MOEA('NSGA2','sed',4)
+    if GLOB.MULTI_PROCESS:
+        process = []
+        for SIR_name in GLOB.TEST_PGM:
+            for i in range(1,GLOB.NUM_VERSIONS[SIR_name]+1):
+                for MOEA in GLOB.TRY_ALGORITHM:
+                    process.append(Process(target=run_MOEA, args=(MOEA, SIR_name, i)))
+
+        for p in process:
+            p.start()
+        for p in process:
+            p.join()
+        print('finish calculation')
+    else:
+         run_MOEA('NSGA2', 'sed', 4)
