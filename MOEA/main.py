@@ -45,16 +45,17 @@ def run_MOEA(MOEA,SIR_name,version):
 
 if __name__ == '__main__':
     if GLOB.MULTI_PROCESS:
-        process = []
         for SIR_name in GLOB.TEST_PGM:
             for i in range(1,GLOB.NUM_VERSIONS[SIR_name]+1):
+                process = []
+                print(SIR_name, 'version', i)
                 for MOEA in GLOB.TRY_ALGORITHM:
                     process.append(Process(target=run_MOEA, args=(MOEA, SIR_name, i)))
 
-        for p in process:
-            p.start()
-        for p in process:
-            p.join()
+                for p in process:
+                    p.start()
+                for p in process:
+                    p.join()
         print('finish calculation')
     else:
          run_MOEA('NSGA2', 'sed', 4)
