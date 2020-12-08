@@ -1,10 +1,11 @@
-DEBUG = True
+DEBUG = False
 
 #Main function variables
 TEST_PGM = ['sed']
 NUM_VERSIONS = {'sed':7}
 NUM_TESTCASES = {'sed':360}
-TRIALS_PER_VERSION = 30
+#TRIALS_PER_VERSION = 30
+TRIALS_PER_VERSION = 2
 TRY_ALGORITHM = ['NSGA2','SPEA2','TAEA']
 RESULT_DIRECTORY = "../Result/"
 

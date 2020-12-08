@@ -28,7 +28,7 @@ def write_file(MOEA,SIR_name,version,result):
 def run_MOEA(MOEA,SIR_name,version):
     result = []
     num_testcases = GLOB.NUM_TESTCASES[SIR_name]
-    for _ in range(GLOB.TRIALS_PER_VERSION):
+    for i in range(GLOB.TRIALS_PER_VERSION):
         if MOEA == 'NSGA2':
             res = NSGA2.run_NSGA2(SIR_name,version,num_testcases)
             result.append(res)
@@ -38,10 +38,9 @@ def run_MOEA(MOEA,SIR_name,version):
         elif MOEA == 'TAEA':
             res = TAEA.run_TAEA(SIR_name,version,num_testcases)
             result.append(res)
-        break
 
     write_file(MOEA, SIR_name, version, result)
 
 
 if __name__ == '__main__':
-    run_MOEA('TAEA','sed',3)
+    run_MOEA('NSGA2','sed',4)

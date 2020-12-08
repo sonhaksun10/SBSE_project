@@ -95,7 +95,10 @@ def str2int(arr):
     new_arr = []
     for cell in arr:
         try:
-            new_arr.append(int(cell))
+            if not cell:
+                new_arr.append(0)
+            else:
+                new_arr.append(int(cell))
         except ValueError:
             new_arr.append(cell)
     return new_arr
