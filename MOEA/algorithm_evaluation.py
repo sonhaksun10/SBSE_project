@@ -89,12 +89,15 @@ def get_HV(data):
     Hyper volume of moea solution
     High HV = Diverse pareto front
 
+    all evaluation metric is zero -> do not consider the evaluation metric
+
     :param data: list(pt)
     :return:     float()
     '''
     print('HV')
     HV = 0
     inv_data = []
+
     for d in data:
         nearest_pt = [0,0,0]
         for invd in inv_data:
@@ -103,7 +106,8 @@ def get_HV(data):
                     nearest_pt[idx] = invd[idx]
         HV_add = 1
         for e in d-np.array(nearest_pt):
-            HV_add *= e
+            if e > 0.:
+                HV_add *= e
         HV += HV_add
         inv_data.append(d)
 
