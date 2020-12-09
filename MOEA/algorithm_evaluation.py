@@ -51,6 +51,25 @@ def read_file(SIR_name, version):
 
     return data, ref_pt
 
+def write_result(SIR_name, version, result):
+    directory = GLOB.RESULT_DIRECTORY
+    for MOEA in GLOB.TRY_ALGORITHM:
+        res = result[MOEA]
+        mean = res.mean(axis=0)
+        std = res.std(axis=0)
+
+        fname = + SIR_name + '_version' + str(version) + '_' + MOEA + '.csv'
+        with open(directory + fname, newline='') as f:
+            wr = csv.writer(f)
+            wr.writerow(['','EPSIOLON','HV','IGD'])
+            wr.writerow(['mean'] + list(mean))
+            wr.writerow(['std'] + list(std))
+            wr.writerow([''])
+            for i in range(len(res)):
+                wr.writerow(['trial'+str(i)] + list(res[i]))
+
+
+
 def calc_indicators(SIR_name, version):
     res = dict()
     data, ref_pt = read_file(SIR_name,version)
@@ -63,7 +82,7 @@ def calc_indicators(SIR_name, version):
             EPSILON = get_EPSILON(data[MOEA][i], ref_pt)
             res_moea.append([EPSILON, HV, IGD])
         res[MOEA] = np.array(res_moea)
-    print(res)
+    write_result(SIR_name,version,res)
 
 def get_HV(data):
     '''
@@ -126,4 +145,7 @@ def get_EPSILON(data,ref):
 
     return largest_dist
 
-calc_indicators('sed',3)
+def analysis_All():
+    for SIR_name in TEST_PGM:
+        for version in GLOB.NUM_VERSIONS[SIR_name]:
+            calc_indicators(SIR_name,version)
