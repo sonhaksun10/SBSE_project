@@ -23,7 +23,7 @@ def run_SPEA2(SIR_name, version, test_size):
         GA.evaluate(union,evaluator)
         get_fitness(union)
         archive = select(union)
-        population = GA.crossover(archive)[-GLOB.POP:]
+        population = GA.crossover(archive)[GLOB.POP+1:]
         if GLOB.DEBUG:
             print(i, len(population))
 
@@ -48,7 +48,7 @@ def get_fitness(pop):
     for p in pop:
         score = 0
         for q in pop:
-            if GA._is_dominate(p,q):
+            if GA._is_dominate(q,p):
                 score += 1
         p.update_flag({'score':score})
 
@@ -90,16 +90,22 @@ def select(pop):
         if GLOB.DEBUG:
             print('truncate population, current size', len(new_pop), 'target size', GLOB.MAX_ARCHIVE_SPEA2)
         num_remove = len(new_pop) - GLOB.MAX_ARCHIVE_SPEA2
-        for _ in range(num_remove):
-            #calculate distance to other nodes
-            for p in new_pop:
-                dist_table = []
-                for i,q in enumerate(new_pop):
-                    dist = np.linalg.norm(p.get_eval()-q.get_eval())
-                    dist_table.append((dist,i))
-                dist_table = sorted(dist_table)
-                p.update_flag({'dist_table':dist_table})
 
+        # calculate distance to other nodes
+        for p in new_pop:
+            dist_table = []
+            for i, q in enumerate(new_pop):
+                dist = np.linalg.norm(p.get_eval() - q.get_eval())
+                dist_table.append((dist, i))
+            dist_table = sorted(dist_table)
+
+            dist_indicator = 0
+            for i in range(1,11):
+                dist_indicator += dist_table[i][0] / (10 ** (i - 1))
+            p.update_flag({'dist_table': dist_table, 'dist_indicator': dist_indicator})
+
+        '''
+        for _ in range(num_remove):
             #truncate, find p with the closest to neighbor
             removed = False
             for p in new_pop:
@@ -130,8 +136,14 @@ def select(pop):
                     for p in new_pop:
                         print(p.get_flag('dist_table'))
                 raise Exception('one element in archive is not removed')
+        '''
+
+        new_pop = sorted(new_pop, key= lambda gene: gene.get_flag('dist_indicator'))[-GLOB.MAX_ARCHIVE_SPEA2:]
+
 
     elif len(new_pop) < GLOB.MAX_ARCHIVE_SPEA2:
+        if GLOB.DEBUG:
+            print('current size', len(new_pop), 'target size', GLOB.MAX_ARCHIVE_SPEA2)
         new_pop = sorted(pop, key= lambda gene: gene.get_flag('fitness'))[:GLOB.MAX_ARCHIVE_SPEA2]
 
     return new_pop
