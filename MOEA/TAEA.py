@@ -88,6 +88,7 @@ def new_crossover(CA,DA,cr,mr,dim):
 
     if len(CA+DA) < 2:
         new_pop += GA.initial_genes(dim, GLOB.POP)
+        return new_pop
     elif len(CA) < 2 or len(DA) < 2:
         new_pop += GA.crossover(CA+DA,mr=mr)
         return new_pop
