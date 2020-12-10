@@ -29,7 +29,7 @@ def run_MOEA(MOEA,SIR_name,version):
     result = []
     num_testcases = GLOB.NUM_TESTCASES[SIR_name]
     for i in range(GLOB.TRIALS_PER_VERSION):
-        print(SIR_name, 'version', version, '_', MOEA, ': trial', i)
+        print('child process:', SIR_name, 'version', version, '_', MOEA, ': trial', i)
         if MOEA == 'NSGA2':
             res = NSGA2.run_NSGA2(SIR_name,version,num_testcases)
             result.append(res)
@@ -41,21 +41,37 @@ def run_MOEA(MOEA,SIR_name,version):
             result.append(res)
 
     write_file(MOEA, SIR_name, version, result)
+    print('child process:', SIR_name, 'version', version, '_', MOEA, '-> finished')
 
 
 if __name__ == '__main__':
+    process = []
     if GLOB.MULTI_PROCESS:
         for SIR_name in GLOB.TEST_PGM:
-            for i in range(1,GLOB.NUM_VERSIONS[SIR_name]+1):
-                process = []
-                print(SIR_name, 'version', i)
+            for i in range(1, GLOB.NUM_VERSIONS[SIR_name] + 1):
                 for MOEA in GLOB.TRY_ALGORITHM:
                     process.append(Process(target=run_MOEA, args=(MOEA, SIR_name, i)))
+                    print("process ready:", SIR_name, 'version', i, '_', MOEA)
 
-                for p in process:
-                    p.start()
-                for p in process:
-                    p.join()
+        cpu_size = os.cpu_count()
+        running_cores = max(1,cpu_size-5)
+
+
+        for i in range(len(process)//running_cores):
+            for j in range(running_cores):
+                p = process[running_cores*i+j]
+                p.start()
+            for j in range(running_cores):
+                p = process[running_cores*i+j]
+                p.join()
+
+        for i in range(len(process) % running_cores):
+            p = process[-i-1]
+            p.start()
+        for i in range(len(process) % running_cores):
+            p = process[-i - 1]
+            p.join()
+
         print('finish calculation')
     else:
-         run_MOEA('NSGA2', 'sed', 4)
+         run_MOEA('TAEA', 'grep', 2)

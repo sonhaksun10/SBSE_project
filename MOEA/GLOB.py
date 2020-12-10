@@ -1,11 +1,11 @@
 DEBUG = False
-#MULTI_PROCESS = True
-MULTI_PROCESS = False
+MULTI_PROCESS = True
+#MULTI_PROCESS = False
 
 #Main function variables
-TEST_PGM = ['sed']
-NUM_VERSIONS = {'sed':7}
-NUM_TESTCASES = {'sed':360}
+TEST_PGM = ['sed','grep']
+NUM_VERSIONS = {'sed':7,'grep':5}
+NUM_TESTCASES = {'sed':360, 'grep':140}
 TRIALS_PER_VERSION = 30
 #TRIALS_PER_VERSION = 2
 TRY_ALGORITHM = ['NSGA2','SPEA2','TAEA']
