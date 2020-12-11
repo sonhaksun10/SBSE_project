@@ -106,7 +106,7 @@ def PMX(parent1, parent2):
     seq1, seq2 = parent1.get_seq(), parent2.get_seq()
     size = min(len(seq1), len(seq2))
     p1, p2 = [0]*size, [0]*size
-    child1,child2 = copy.deepcopy(seq1), copy.deepcopy(seq2)
+    child1, child2 = copy.deepcopy(seq1), copy.deepcopy(seq2)
 
     cut1 = random.randint(0, size - 1)
     cut2 = random.randint(cut1 + 1, size)

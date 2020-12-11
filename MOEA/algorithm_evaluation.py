@@ -38,12 +38,17 @@ def read_file(SIR_name, version):
                 for line in rdr:
                     for j in range(len(line)):
                         line[j] = float(line[j])
-                    data_moea[i].append(np.array(line))
                     gene = GA.Gene_Info(None)
                     gene.set_eval(np.array(line))
+                    data_moea[i].append(gene)
                     ref_pt.append(gene)
 
             ref_pt = GA.get_pareto(ref_pt)[0] #update reference point
+
+        for i in range(len(data_moea)):
+            data_moea[i] = GA.get_pareto(data_moea[i])[0]
+            for j in range(len(data_moea[i])):
+                data_moea[i][j] = data_moea[i][j].get_eval()
         data[MOEA] = data_moea
 
     for i in range(len(ref_pt)):
