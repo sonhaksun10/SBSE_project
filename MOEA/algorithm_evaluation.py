@@ -3,6 +3,7 @@ import GLOB
 import GATool as GA
 import numpy as np
 import random
+import version_evaluation as veval
 
 def read_file(SIR_name, version):
     '''
@@ -160,4 +161,35 @@ def analysis_All():
             print('working on:', SIR_name, 'version', version + 1)
             calc_indicators(SIR_name,version)
 
-analysis_All()
+def get_APFDc():
+    for SIR_name in GLOB.TEST_PGM:
+        directory = GLOB.RESULT_DIRECTORY + SIR_name + '/'
+        for version in range(GLOB.NUM_VERSIONS[SIR_name]):
+            evaluator = veval.VEval(SIR_name, version+1, GLOB.NUM_TESTCASES[SIR_name], MOEA = False)
+            for MOEA in GLOB.TRY_ALGORITHM:
+                sequences = []
+                APFDc = []
+                for i in range(GLOB.TRIALS_PER_VERSION):
+                    fname = 'seq_' + SIR_name + '_version' + str(version + 1) + '_' + MOEA + '_trial' + str(i) + '.csv'
+                    with open(directory+fname,'r') as f:
+                        rdr = csv.reader(f)
+                        for line in rdr:
+                            for j in range(len(line)):
+                                line[j] = int(line[j])
+                            sequences.append(line)
+
+                for seq in sequences:
+                    APFDc.append(evaluator.eval(seq))
+
+                mean = sum(APFDc)/len(APFDc)
+                std = np.array(APFDc).std()
+
+                fname = 'APFDc_' + SIR_name + '_version' + str(version + 1) + '_' + MOEA + '.csv'
+                with open(GLOB.RESULT_DIRECTORY + fname,'w',newline='') as f:
+                    wr = csv.writer(f)
+                    wr.writerow(['mean','std'])
+                    wr.writerow([mean,std])
+                    wr.writerow(APFDc)
+                print('finish to write', fname)
+
+get_APFDc()

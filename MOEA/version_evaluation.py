@@ -6,7 +6,7 @@ import csv
 import numpy as np
 
 class VEval:
-    def __init__(self,SIR_name, version, test_size):
+    def __init__(self,SIR_name, version, test_size, MOEA = True):
         self.version = version
         self.test_size = test_size
 
@@ -14,8 +14,12 @@ class VEval:
         self.delta_cov = []
         self.fault_history = []
         self.time_cost = []
+        self.MOEA = MOEA
 
-        self.read_data(SIR_name)
+        if MOEA:
+            self.read_data(SIR_name)
+        else:
+            self.read_data2(SIR_name)
 
 
     def read_data(self,SIR_name):
@@ -55,12 +59,33 @@ class VEval:
             for line in f.readlines():
                 self.time_cost.append(int(line.split()[1]))
 
-    def eval(self, seq):
-        e1 = APFDc(seq,self.comp_coverage,self.time_cost)
-        e2 = APFDc(seq,self.delta_cov,self.time_cost)
-        e3 = APFDc(seq,self.fault_history,self.time_cost)
+    def read_data2(self,SIR_name):
+        DIR_name = "../Feature/" + SIR_name + "/"
+        version = self.version
 
-        return np.array([e1,e2,e3])
+        fhistory = "fault_history(" + SIR_name + "_v" + str(version) + ").csv"
+        timecost = "testcasetTime(v" + str(version-1) + ").txt"
+
+        with open(DIR_name + fhistory, 'r') as f:
+            rdr = csv.reader(f)
+            for line in rdr:
+                new_line = str2int(line[1:])
+                self.fault_history.append(new_line)
+            self.fault_history.pop(0)
+
+        with open(DIR_name + timecost, 'r') as f:
+            for line in f.readlines():
+                self.time_cost.append(int(line.split()[1]))
+
+    def eval(self, seq):
+        if self.MOEA:
+            e1 = APFDc(seq,self.comp_coverage,self.time_cost)
+            e2 = APFDc(seq,self.delta_cov,self.time_cost)
+            e3 = APFDc(seq,self.fault_history,self.time_cost)
+
+            return np.array([e1,e2,e3])
+        else:
+            return APFDc(seq,self.fault_history,self.time_cost)
 
 def APFDc(seq, fault_mat, cost):
     num_fault = len(fault_mat[0])
