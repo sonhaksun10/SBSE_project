@@ -19,7 +19,7 @@ def run_TAEA(SIR_name, version, test_size):
     for i in range(GLOB.MAX_IT):
         CA, DA = collect_non_dominated(population,CA,DA)
         #print(len(CA), len(DA))
-        population = new_crossover(CA,DA,GLOB.CROSSOVER_RATE,1/test_size)
+        population = new_crossover(CA,DA,GLOB.CROSSOVER_RATE,1/test_size,dim)
         GA.evaluate(population,evaluator)
         if GLOB.DEBUG:
             print(i,len(CA+DA), 'covergence archive size', len(CA), 'divergence archive size', len(DA))
@@ -82,12 +82,13 @@ def collect_non_dominated(pop,CA,DA):
 
 
 
-def new_crossover(CA,DA,cr,mr):
+def new_crossover(CA,DA,cr,mr,dim):
     ratio = GLOB.CA_DA_RATIO
     new_pop = []
 
     if len(CA+DA) < 2:
         new_pop += GA.initial_genes(dim, GLOB.POP)
+        return new_pop
     elif len(CA) < 2 or len(DA) < 2:
         new_pop += GA.crossover(CA+DA,mr=mr)
         return new_pop

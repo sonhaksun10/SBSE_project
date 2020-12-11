@@ -15,8 +15,7 @@ class VEval:
         self.fault_history = []
         self.time_cost = []
 
-        if SIR_name == 'sed':
-            self.read_data(SIR_name)
+        self.read_data(SIR_name)
 
 
     def read_data(self,SIR_name):
@@ -25,7 +24,7 @@ class VEval:
 
         cov = "V" + str(version-1) + "coverage_com.csv"
         delta = "delta_coverage_" + str(version-1) + "_" + str(version) + ".csv"
-        fhistory = "fault_history(" + SIR_name + "_v" + str(version) + ").csv"
+        fhistory = "fault_history(" + SIR_name + "_v" + str(version - 1) + ").csv"
         timecost = "testcasetTime(v" + str(version-1) + ").txt"
 
         with open(DIR_name + cov, 'r') as f:

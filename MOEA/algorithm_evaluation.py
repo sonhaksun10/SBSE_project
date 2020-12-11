@@ -31,19 +31,24 @@ def read_file(SIR_name, version):
     for MOEA in GLOB.TRY_ALGORITHM:
         data_moea = [[] for i in range(GLOB.TRIALS_PER_VERSION)]
         for i in range(GLOB.TRIALS_PER_VERSION):
-            fname = 'eval_' + SIR_name + '_version' + str(version) + '_' + MOEA + '_trial' + str(i) + '.csv'
+            fname = 'eval_' + SIR_name + '_version' + str(version + 1) + '_' + MOEA + '_trial' + str(i) + '.csv'
             with open(directory + fname, 'r') as f:
                 f.readline()
                 rdr = csv.reader(f)
                 for line in rdr:
                     for j in range(len(line)):
                         line[j] = float(line[j])
-                    data_moea[i].append(np.array(line))
                     gene = GA.Gene_Info(None)
                     gene.set_eval(np.array(line))
+                    data_moea[i].append(gene)
                     ref_pt.append(gene)
 
             ref_pt = GA.get_pareto(ref_pt)[0] #update reference point
+
+        for i in range(len(data_moea)):
+            data_moea[i] = GA.get_pareto(data_moea[i])[0]
+            for j in range(len(data_moea[i])):
+                data_moea[i][j] = data_moea[i][j].get_eval()
         data[MOEA] = data_moea
 
     for i in range(len(ref_pt)):
@@ -58,8 +63,8 @@ def write_result(SIR_name, version, result):
         mean = res.mean(axis=0)
         std = res.std(axis=0)
 
-        fname = + SIR_name + '_version' + str(version) + '_' + MOEA + '.csv'
-        with open(directory + fname, newline='') as f:
+        fname = SIR_name + '_version' + str(version + 1) + '_' + MOEA + '.csv'
+        with open(directory + fname, 'w', newline='') as f:
             wr = csv.writer(f)
             wr.writerow(['','EPSIOLON','HV','IGD'])
             wr.writerow(['mean'] + list(mean))
@@ -94,7 +99,6 @@ def get_HV(data):
     :param data: list(pt)
     :return:     float()
     '''
-    print('HV')
     HV = 0
     inv_data = []
 
@@ -105,9 +109,10 @@ def get_HV(data):
                 if d[idx] >= invd[idx] >= nearest_pt[idx]:
                     nearest_pt[idx] = invd[idx]
         HV_add = 1
-        for e in d-np.array(nearest_pt):
-            if e > 0.:
-                HV_add *= e
+        diff = d-np.array(nearest_pt)
+        for i in range(len(diff)):
+            if d[i] > 0.:
+                HV_add *= diff[i]
         HV += HV_add
         inv_data.append(d)
 
@@ -150,6 +155,9 @@ def get_EPSILON(data,ref):
     return largest_dist
 
 def analysis_All():
-    for SIR_name in TEST_PGM:
-        for version in GLOB.NUM_VERSIONS[SIR_name]:
+    for SIR_name in GLOB.TEST_PGM:
+        for version in range(GLOB.NUM_VERSIONS[SIR_name]):
+            print('working on:', SIR_name, 'version', version + 1)
             calc_indicators(SIR_name,version)
+
+analysis_All()
