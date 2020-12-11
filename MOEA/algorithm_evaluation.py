@@ -183,12 +183,13 @@ def get_APFDc():
 
                 mean = sum(APFDc)/len(APFDc)
                 std = np.array(APFDc).std()
+                maximum = max(APFDc)
 
                 fname = 'APFDc_' + SIR_name + '_version' + str(version + 1) + '_' + MOEA + '.csv'
                 with open(GLOB.RESULT_DIRECTORY + fname,'w',newline='') as f:
                     wr = csv.writer(f)
-                    wr.writerow(['mean','std'])
-                    wr.writerow([mean,std])
+                    wr.writerow(['mean','std','max'])
+                    wr.writerow([mean,std,maximum])
                     wr.writerow(APFDc)
                 print('finish to write', fname)
 
